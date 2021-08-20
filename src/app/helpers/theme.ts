@@ -10,6 +10,16 @@ interface IonRangeSliderInterface{
     from: any;
 }
 
+export const loadScript = (url: string) => {
+  const body = document.body as HTMLDivElement;
+  const script = document.createElement('script');
+  script.innerHTML = '';
+  script.src = url;
+  script.async = false;
+  script.defer = true;
+  body.appendChild(script);
+};
+
 export const  initTemplate = () =>   $(() => {
     // var v = $;
         jQuery(document).ready(() => {

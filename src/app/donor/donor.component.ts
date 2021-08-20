@@ -12,7 +12,6 @@ export class DonorComponent implements OnInit {
   private _: any;
 
   constructor() {
-    initTemplate();
   }
 
   ngOnInit(): void {

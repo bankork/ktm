@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {initTemplate} from './helpers/theme';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {initTemplate, loadScript} from './helpers/theme';
 
 
 @Component({
@@ -7,11 +7,21 @@ import {initTemplate} from './helpers/theme';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
  title = 'ktmfoundation';
+  private static readonly externalScripts = [
+    '../assets/js/jquery.min.js',
+    '../assets/js/libs.min.js',
+    '../assets/js/common.min.js',
+  ];
 
   ngOnInit(): void {
-    initTemplate();
+  }
+
+  ngAfterViewInit(): void {
+    for (const script of AppComponent.externalScripts) {
+      loadScript(script);
+    }
   }
 
 }
